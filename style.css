@@ -1,0 +1,43 @@
+body {
+    margin: 20px;
+    background-color: grey;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 2fr auto;
+    grid-template-areas: 
+    "display"
+    "board"
+    "options";
+}
+
+.display {
+    grid-area: display;
+    justify-content: center;
+    align-content: center;
+}
+
+.board {
+    /* width: 100vw;
+    height: 100vh; */
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border: 1px solid green;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
