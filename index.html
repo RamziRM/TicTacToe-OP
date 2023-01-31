@@ -12,7 +12,7 @@
 <body>
     <div class="main">
         <div class="display">
-            <a>Tic Tac Toe Yo</a>
+            <a class="title">Tic Tac Toe Yo</a>
             <div class="result"></div>
             <div class="turn"></div>
         </div>
@@ -28,9 +28,27 @@
             <div class="cell"></div>
         </div>
         <div class="options">
-            <button class="btn" id="o">O</button>
-            <button class="btn" id="x">X</button>
             <button class="btn" id="restart">Restart</button>
+        </div>
+        <div id="initial-popup">
+            <form id="start-form">
+                <div class="user-choice">
+                    <legend>Select an option:</legend>
+                    <div>
+                        <input type="radio" id="X" name="user-choice" value="X" required>
+                        <label for="X">X</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="O" name="user-choice" value="O" required>
+                        <label for="O">O</label>                
+                    </div>
+                </div>
+                <div class="inputField">
+                    <input type="radio" id="pvp" name="game-format" value="1" required>
+                    <label for="pvp">Player vs Player</label>
+                </div>
+                <button type="submit" class="start-game">START GAME</button>
+            </form>
         </div>
 </div>
 </body>
