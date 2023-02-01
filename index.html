@@ -17,15 +17,15 @@
             <div class="turn"></div>
         </div>
         <div class="board">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
+            <div class="cell" id="0"></div>
+            <div class="cell" id="1"></div>
+            <div class="cell" id="2"></div>
+            <div class="cell" id="3"></div>
+            <div class="cell" id="4"></div>
+            <div class="cell" id="5"></div>
+            <div class="cell" id="6"></div>
+            <div class="cell" id="7"></div>
+            <div class="cell" id="8"></div>
         </div>
         <div class="options">
             <button class="btn" id="restart">Restart</button>
@@ -35,16 +35,16 @@
                 <div class="user-choice">
                     <legend>Select an option:</legend>
                     <div>
-                        <input type="radio" id="X" name="user-choice" value="X" required>
+                        <input type="radio" id="X" name="p1Choice" value="X" checked>
                         <label for="X">X</label>
                     </div>
                     <div>
-                        <input type="radio" id="O" name="user-choice" value="O" required>
+                        <input type="radio" id="O" name="p1Choice" value="O">
                         <label for="O">O</label>                
                     </div>
                 </div>
                 <div class="inputField">
-                    <input type="radio" id="pvp" name="game-format" value="1" required>
+                    <input type="radio" id="pvp" name="gameFormat" value="1" required>
                     <label for="pvp">Player vs Player</label>
                 </div>
                 <button type="submit" class="start-game">START GAME</button>
