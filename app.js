@@ -85,9 +85,14 @@ const playMove = (cell, data) => {
 
     // Increase round #
     data.round++;
-    //
-    nextPlayer(data);
     console.log(cell, data);
+
+    if (endConditions(data)) {
+        return ;
+    };
+    
+    nextPlayer(data);
+
 }
 
 // Switch currentplayer - based on round++ -- P1 then P2 loop until game endCondition met
@@ -104,8 +109,6 @@ const nextPlayer = (data) => {
     }
         //DOM update
     turnDisplay.textContent = `${currentPlayerName} : ${data.currentPlayer} it's your turn!`;
-
-    endConditions(data);
 
 }
 
