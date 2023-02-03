@@ -6,9 +6,9 @@ form.addEventListener('submit', (e) => {
     // prevent refresh on submit
     e.preventDefault();
 
-    // initialize form data
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
+    // initialize form data 
+    const formData = new FormData(form); // FormData object -( () constructor)- array of arrays-- k/v pairs populate object --- Data manipulation
+    const data = Object.fromEntries(formData); // Obj.fromEntries() converts 'FormData' obj into plain obj-- more general use within js
     document.querySelector("#initial-popup").setAttribute("hidden", true);
 
     initializeGame(data);
@@ -60,8 +60,9 @@ const playMove = (cell, data) => {
     }
 
     // Player MOVE - X or O insert into cell - adjust DOM
-    data.board[cell.id] = data.currentPlayer;
-    cell.textContent = data.currentPlayer;
+    data.board[cell.id] = data.currentPlayer; // Updates value of obj(data.board) property-- Sets value currentPlayer X||O
+    cell.textContent = data.currentPlayer; // Updates cell text content of DOM element(cell) with currentPlayer X||O
+    cell.classList.add(data.currentPlayer === 'X' ? 'player1' : 'player2') // classList.add() Adds new class -- Based on if? then '' else ''
 
 
     console.log(cell, data);
