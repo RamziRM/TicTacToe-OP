@@ -48,6 +48,11 @@ const initializeVars = (data) => {
     data.round = 0;
     data.gameOver = false; // return defined in playMove --(when true end)
     data.currentPlayer = data.p1Choice;
+
+    // p2'choice'-- implicit assignment based on p1choice
+    let p2Choice = data.p1Choice === 'X' ? 'O' : 'X';
+        // define k/v pair within data (obj)
+    data.p2Choice = p2Choice;
 }
 
 // Eventlisteners to each cell -- Linked to playMove (onclick)
@@ -85,8 +90,8 @@ const playMove = (cell, data) => {
 // Return once any of winning combinations met -- Alert? display?
     // win - tie - continue
 const endSituations = (data) => {
-    // win
+    // win --winCheck true
     if (winCheck (data, data.currentPlayer)) {
-        
+       
     }
 }
