@@ -1,4 +1,4 @@
-// Winning Combinations-- gameOver:
+// Winning -board- Combinations
 const wCombinations = [
     [0, 1, 2],
     [3, 4, 5],
@@ -53,6 +53,7 @@ const initializeVars = (data) => {
     let p2Choice = data.p1Choice === 'X' ? 'O' : 'X';
         // define k/v pair within data (obj)
     data.p2Choice = p2Choice;
+    console.log(data);
 }
 
 // Eventlisteners to each cell -- Linked to playMove (onclick)
@@ -84,14 +85,12 @@ const playMove = (cell, data) => {
 
     // Increase round #
     data.round++;
+    nextPlayer(data);
     console.log(cell, data);
 }
 
-// Return once any of winning combinations met -- Alert? display?
-    // win - tie - continue
-const endSituations = (data) => {
-    // win --winCheck true
-    if (winCheck (data, data.currentPlayer)) {
-       
-    }
+// Switch currentplayer - based on round++ -- P1 then P2 loop until game endCondition met
+const nextPlayer = (data) => {
+    data.currentPlayer = data.currentPlayer === 'X' ? 'O' : 'X';
+    // DOM update
 }
