@@ -2,6 +2,7 @@
 const form = document.getElementById('start-form');
 
 // form - actions - eventlistener
+    // obj create/mod -- hide form
 form.addEventListener('submit', (e) => {
     // prevent refresh on submit
     e.preventDefault();
@@ -21,6 +22,13 @@ restartBtn.addEventListener('click', () => {
     location.reload();
 });
 
+const initializeGame = (data) => {
+    // initialize game vars
+    initializeVars(data);
+    // add event listeners - call f()
+    addELtoBoard(data)
+};
+
 // initialize vars - data == obj -- Add to it, all in one obj that can be called/passed to a f()
 const initializeVars = (data) => {
     data.gameFormat = +data.gameFormat; // convert str to int
@@ -28,15 +36,7 @@ const initializeVars = (data) => {
     data.round = 0;
     data.gameOver = false;
     data.currentPlayer = data.p1Choice;
-
 }
-
-const initializeGame = (data) => {
-    // initialize game vars
-    initializeVars(data);
-    // add event listeners - call f()
-    addELtoBoard(data)
-};
 
 // Eventlisteners to each cell -- Linked to playMove (onclick)
 const addELtoBoard = (data) => {
@@ -47,7 +47,8 @@ const addELtoBoard = (data) => {
     })
 }
 
-//  Places userchoice into cell (X || O)- Move -- Check game + cell state
+//  Places currentPLayer into cell (X || O)-- Check game + cell state
+    // - Move-actions (cell text and obj property) 
 const playMove = (cell, data) => {
     // check if game is over
     if (data.gameOver) {
@@ -62,8 +63,14 @@ const playMove = (cell, data) => {
     // Player MOVE - X or O insert into cell - adjust DOM
     data.board[cell.id] = data.currentPlayer; // Updates value of obj(data.board) property-- Sets value currentPlayer X||O
     cell.textContent = data.currentPlayer; // Updates cell text content of DOM element(cell) with currentPlayer X||O
-    cell.classList.add(data.currentPlayer === 'X' ? 'player1' : 'player2') // classList.add() Adds new class -- Based on if? then '' else ''
+    cell.classList.add(data.currentPlayer === 'X' ? 'player1' : 'player2') // classList.add() Adds new class -- Based on if? then '' else '' ---(ternary op)
 
-
+    // Increase round #
+    data.round++;
     console.log(cell, data);
+}
+
+// Return once any of winning combinations met -- Alert? display?
+const gameOver = () => {
+    
 }
