@@ -93,4 +93,14 @@ const playMove = (cell, data) => {
 const nextPlayer = (data) => {
     data.currentPlayer = data.currentPlayer === 'X' ? 'O' : 'X';
     // DOM update
+    const turnDisplay = document.querySelector('.turn');
+        // Display turn-- Player # and p_Choice (X||O)
+    let currentPlayerName;
+    if (data.currentPlayer === data.p1Choice) {
+        currentPlayerName = "Player 1";
+    } else {
+        currentPlayerName = "Player 2";
+    }
+        //DOM update
+    turnDisplay.textContent = `${currentPlayerName} : ${data.currentPlayer} it's your turn!`
 }

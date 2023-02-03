@@ -25,6 +25,7 @@ body {
 .display {
     grid-area: display;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-content: center;
 }
