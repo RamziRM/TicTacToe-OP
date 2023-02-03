@@ -1,3 +1,15 @@
+// Winning Combinations-- gameOver:
+const wCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 3, 8],
+    [2, 4, 6]
+];
+
 // Initial form to start game -- Collect obj data - to reuse throughout
 const form = document.getElementById('start-form');
 
@@ -34,7 +46,7 @@ const initializeVars = (data) => {
     data.gameFormat = +data.gameFormat; // convert str to int
     data.board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     data.round = 0;
-    data.gameOver = false;
+    data.gameOver = false; // return defined in playMove --(when true end)
     data.currentPlayer = data.p1Choice;
 }
 
@@ -55,7 +67,7 @@ const playMove = (cell, data) => {
         return;
     }
 
-    // check if cell has X or O
+    // check if cell has X or O-- when true end (return== do nothing)
     if (data.board[cell.id] === 'X'|| data.board[cell.id] === 'O') {
         return;
     }
@@ -71,6 +83,10 @@ const playMove = (cell, data) => {
 }
 
 // Return once any of winning combinations met -- Alert? display?
-const gameOver = () => {
-    
+    // win - tie - continue
+const endSituations = (data) => {
+    // win
+    if (winCheck (data, data.currentPlayer)) {
+        
+    }
 }
