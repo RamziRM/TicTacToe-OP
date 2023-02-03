@@ -119,3 +119,9 @@ body {
 #start-form > div {
     padding: 20px;
 }
+
+.cell.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  

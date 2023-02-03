@@ -6,7 +6,7 @@ const wCombinations = [
     [0, 3, 6],
     [1, 4, 7],
     [2, 5, 8],
-    [0, 3, 8],
+    [0, 4, 8],
     [2, 4, 6]
 ];
 
@@ -90,7 +90,7 @@ const playMove = (cell, data) => {
     if (endConditions(data)) {
         return ;
     };
-    
+
     nextPlayer(data);
 
 }
@@ -117,7 +117,6 @@ const endConditions = (data) => {
     const resultDisplay = document.querySelector('.result');
     if (checkWin(data, data.currentPlayer)) {
         // Update DOM (display) to announce winner
-        let winner = data.currentPlayer;
         let currentPlayerName;
         if (data.currentPlayer === data.p1Choice) {
             currentPlayerName = "Player 1";
@@ -126,6 +125,13 @@ const endConditions = (data) => {
         }; 
         document.querySelector(".turn").setAttribute("hidden", true);
         resultDisplay.textContent = `${currentPlayerName} : ${data.currentPlayer} is the WINNER!`;
+        const cells = document.querySelectorAll('.cell');
+
+        if (checkWin(data, data.currentPlayer)) {
+        cells.forEach((cell) => {
+            cell.classList.add('disabled');
+        });
+        };
 
     } else if (data.round === 9) {
         resultDisplay.textContent = "It's a tie! -- Play again";
