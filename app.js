@@ -85,6 +85,7 @@ const playMove = (cell, data) => {
 
     // Increase round #
     data.round++;
+    //
     nextPlayer(data);
     console.log(cell, data);
 }
@@ -102,5 +103,47 @@ const nextPlayer = (data) => {
         currentPlayerName = "Player 2";
     }
         //DOM update
-    turnDisplay.textContent = `${currentPlayerName} : ${data.currentPlayer} it's your turn!`
+    turnDisplay.textContent = `${currentPlayerName} : ${data.currentPlayer} it's your turn!`;
+
+    endConditions(data);
+
+}
+
+// end -- Win-Tie- continue -
+const endConditions = (data) => {
+    const resultDisplay = document.querySelector('.result');
+    if (checkWin(data, data.currentPlayer)) {
+        // Update DOM (display) to announce winner
+        let winner = data.currentPlayer;
+        let currentPlayerName;
+        if (data.currentPlayer === data.p1Choice) {
+            currentPlayerName = "Player 1";
+        } else {
+            currentPlayerName = "Player 2";
+        }; 
+        document.querySelector(".turn").setAttribute("hidden", true);
+        resultDisplay.textContent = `${currentPlayerName} : ${data.currentPlayer} is the WINNER!`;
+
+    } else if (data.round === 9) {
+        resultDisplay.textContent = "It's a tie! -- Play again";
+        document.querySelector(".turn").setAttribute("hidden", true);
+        data.gameOver = true;
+        return true;
+    };
+    return false;
+}
+
+// loop through wCombinations to check for win only
+const checkWin = (data, player) => {
+    let result = false;
+    wCombinations.forEach((condition) => {
+        if (
+            data.board[condition[0]] === player &&
+            data.board[condition[1]] === player &&
+            data.board[condition[2]] === player
+        ) {
+            result = true;
+        }
+    });
+    return result;
 }
